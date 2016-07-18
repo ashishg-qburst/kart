@@ -1,6 +1,20 @@
 source 'https://rubygems.org'
 
+gem 'font-awesome-rails'
 
+gem 'devise'
+
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog'
+
+gem 'kaminari'
+gem 'kaminari-bootstrap'
+
+gem 'faker'
+
+gem 'bcrypt'
+gem 'bootstrap-sass'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 # Use sqlite3 as the database for Active Record
@@ -48,6 +62,7 @@ group :test do
   gem 'minitest-reporters'
   gem 'mini_backtrace'
   gem 'guard-minitest'
+  gem 'guard'
 end
 
 
