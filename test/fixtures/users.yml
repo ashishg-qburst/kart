@@ -6,7 +6,5 @@
 #
 
 one:
-  email: test1@test.com
-
-two:
-  email: test2@test.com
+  email: e@mail.com
+  encrypted_password: <%= User.new.send(:password_digest, "password") %>
