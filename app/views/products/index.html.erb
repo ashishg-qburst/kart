@@ -1,0 +1,12 @@
+<h2>Products</h2>
+<% if @products.any? %>
+<div class="row">
+  <% @products.each do |product| %>
+    <div class="col-md-3">
+    <h3><%= link_to product.name, product_path(product) %></h3>
+    <h4><%= product.brand %></h4>
+    <p><%= product.price %></p>
+  </div>
+  <% end %>
+</div>
+<% end %>
