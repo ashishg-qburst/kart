@@ -12,6 +12,13 @@ Category.create!(name: "Footwear")
 cat = Category.all
 
 10.times do
+  name = Faker::Name.name
+  email = Faker::Internet.email
+  User.create!(name: name, email: email,
+                password: "foobar", password_confirmation: "foobar")
+end
+
+10.times do
   name = Faker::Space.moon
   brand = Faker::Space.planet
   description = Faker::Lorem.paragraph
@@ -24,4 +31,10 @@ cat = Category.all
     price: price,
     category_id: category.id,
     units: units)
+end
+
+prod = Product.all
+10.times do
+  review = Faker::Lorem::paragraph(2)
+  Review.create!(content: review, product_id: prod.sample.id, user_id: rand(1..9))
 end

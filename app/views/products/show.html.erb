@@ -6,3 +6,20 @@
 <p><%= pluralize(@product.units, "unit") %> available</p>
 <p>Price : Rs.<%= @product.price %></p>
 <p><%= @product.description %></p>
+
+<%if user_signed_in? %>
+<%= form_for @review do |f| %>
+  <%= f.text_area :content %>
+   <%= hidden_field_tag :user_id, current_user.id  %>
+   <%= hidden_field_tag :product_id, @product.id %>
+  <%= f.submit %>
+<% end %>
+<% end %>
+
+<% if @reviews.any? %>
+<h3>Reviews</h3>
+  <% @reviews.each do |review| %>
+    <p><b><%= review.user.email %></b></p>
+    <p><i><%= review.content %></i></p>
+  <% end %>
+<% end %>
