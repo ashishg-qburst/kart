@@ -1,0 +1,15 @@
+<h2>My Cart</h2>
+<% if @cart_products.any? %>
+<div class="row" id="my-cart">
+  <% @cart_products.each do |product| %>
+    <div class="col-md-3">
+    <h3><%= link_to product.name, product_path(product) %></h3>
+    <h4><%= product.brand %></h4>
+    <p><%= product.price %></p>
+    <%=link_to "" , data: {targetUrl: remove_from_cart_path(product)} do%>
+        <span class="cart-item">Remove from Cart</span>
+    <%end%>
+  </div>
+  <% end %>
+</div>
+<% end %>

@@ -14,4 +14,8 @@ class User < ActiveRecord::Base
         user.password = Devise.friendly_token[0,20]
       end
   end
+
+  def cart_count
+    $redis.scard "cart#{id}"
+  end
 end

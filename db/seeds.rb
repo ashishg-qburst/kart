@@ -15,7 +15,7 @@ cat = Category.all
   name = Faker::Space.moon
   brand = Faker::Space.planet
   description = Faker::Lorem.paragraph
-  price = (rand(9).to_s + "000").to_i
+  price = (rand(1..9).to_s + "000").to_i
   category = cat.sample
   units = rand(50)
   Product.create!(name: name,

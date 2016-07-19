@@ -7,5 +7,6 @@ class ProductsController < ApplicationController
   def show
     @categories = get_categories
     @product = Product.find(params[:id])
+    @cart_action = @product.cart_action current_user.try :id
   end
 end
