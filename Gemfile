@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'font-awesome-rails'
 
 gem 'factory_girl'
+gem 'omniauth-google-oauth2'
 gem 'devise'
 
 gem 'carrierwave'

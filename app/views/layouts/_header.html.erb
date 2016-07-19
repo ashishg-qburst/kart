@@ -5,6 +5,11 @@
     
     <nav>
       <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+            <li id="user-email">
+              Signed in as: <%= current_user.email %>        
+            </li>
+          <% end %>
         <li><%= link_to "Home", root_path %></li>
         <li><%= link_to "Help", '#' %></li>
         <% if user_signed_in? %>

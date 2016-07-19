@@ -7,9 +7,12 @@ include Devise::Test::ControllerHelpers
  def setup
     @request.env["devise.mapping"] = Devise.mappings[:admin]
     @user = users(:one)
+    sign_in @user
   end
 
   test "should get index" do
+    @request.env['devise.mapping'] = Devise.mappings[:user]
+    sign_in users(:one)
     get :index
     assert_response :success
   end
