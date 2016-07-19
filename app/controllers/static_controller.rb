@@ -1,5 +1,6 @@
 class StaticController < ApplicationController
   def home
+    @categories = get_categories
     @products = Product.all
   end
 

@@ -1,4 +1,8 @@
+<% provide(:title, @product.name) %>
+<%= render 'shared/catbar' %>
 <h2><%= @product.name %></h2>
+<p><%= @product.category.name %></p>
 <p><%= @product.brand %></p>
+<p><%= pluralize(@product.units, "unit") %> available</p>
 <p>Price : Rs.<%= @product.price %></p>
 <p><%= @product.description %></p>
