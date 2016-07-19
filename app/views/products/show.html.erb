@@ -16,6 +16,13 @@
 <% end %>
 <% end %>
 
+<%if signed_in? %>
+  <%= link_to "", class: "button", data: {target: @cart_action, addUrl: add_to_cart_path(@product), removeUrl: remove_from_cart_path(@product)} do %>
+    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+    <span><%= @cart_action %></span> Cart
+  <%end%>
+<%end%>
+
 <% if @reviews.any? %>
 <h3>Reviews</h3>
   <% @reviews.each do |review| %>
@@ -23,3 +30,5 @@
     <p><i><%= review.content %></i></p>
   <% end %>
 <% end %>
+
+

@@ -6,10 +6,17 @@
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
+        <li>
+          <%= link_to cart_path do%>
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            My Cart
+            (<span class="cart-count"><%=current_user.cart_count%></span>)
+          <%end%>
+        </li>
             <li id="user-email">
               Signed in as: <%= current_user.email %>        
             </li>
-          <% end %>
+        <% end %>
         <li><%= link_to "Home", root_path %></li>
         <li><%= link_to "Help", '#' %></li>
         <% if user_signed_in? %>

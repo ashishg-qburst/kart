@@ -9,5 +9,6 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @reviews = Review.where(product_id: @product.id)
     @review = Review.new
+    @cart_action = @product.cart_action current_user.try :id
   end
 end

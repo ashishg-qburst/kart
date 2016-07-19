@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'redis', '~>3.2'
+gem 'hiredis'
+
 gem 'font-awesome-rails'
 
 gem 'factory_girl'
