@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'orders/create'
+
+  resources :orders, only: [:create]
+
   resources :reviews, only: [:create]
 
   resource :cart, only: [:show] do

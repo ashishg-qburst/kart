@@ -7,28 +7,29 @@
 <p>Price : Rs.<%= @product.price %></p>
 <p><%= @product.description %></p>
 
-<%if user_signed_in? %>
-<%= form_for @review do |f| %>
-  <%= f.text_area :content %>
-   <%= hidden_field_tag :user_id, current_user.id  %>
-   <%= hidden_field_tag :product_id, @product.id %>
-  <%= f.submit %>
-<% end %>
-<% end %>
-
 <%if signed_in? %>
-  <%= link_to "", class: "button", data: {target: @cart_action, addUrl: add_to_cart_path(@product), removeUrl: remove_from_cart_path(@product)} do %>
-    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-    <span><%= @cart_action %></span> Cart
-  <%end%>
+<%if @cart_action == "Add to" %>
+Choose Quantity: <input type="text" id="quant" />
+<% end %>
+<%= link_to "", class: "button", data: {target: @cart_action, addUrl: add_to_cart_path(@product), removeUrl: remove_from_cart_path(@product)} do %>
+<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+<span><%= @cart_action %></span> Cart
+<%end%>
 <%end%>
 
 <% if @reviews.any? %>
 <h3>Reviews</h3>
-  <% @reviews.each do |review| %>
-    <p><b><%= review.user.email %></b></p>
-    <p><i><%= review.content %></i></p>
-  <% end %>
+<% @reviews.each do |review| %>
+<p><b><%= review.user.email %></b></p>
+<p><i><%= review.content %></i></p>
+<% end %>
 <% end %>
 
-
+<%if user_signed_in? %>
+<%= form_for @review do |f| %>
+<%= f.text_area :content %>
+<%= hidden_field_tag :user_id, current_user.id  %>
+<%= hidden_field_tag :product_id, @product.id %>
+<%= f.submit %>
+<% end %>
+<% end %>
