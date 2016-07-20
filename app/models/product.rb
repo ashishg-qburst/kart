@@ -4,7 +4,9 @@ class Product < ActiveRecord::Base
   validates :name, presence: true
   validates :brand, presence: true
   validates :price, presence: true
-  
+
+  ratyrate_rateable "product"
+
   def cart_action(current_user_id)
     if $redis.sismember "cart#{current_user_id}", id
       "Remove from"

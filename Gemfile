@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'ratyrate'
+
 gem 'redis', '~>3.2'
 gem 'hiredis'
 

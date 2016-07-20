@@ -1,12 +1,12 @@
 <% provide(:title, @product.name) %>
 <%= render 'shared/catbar' %>
-<h2><%= @product.name %></h2>
+<h2><%= @product.name %><%= rating_for @product, "product", disable_after_rate: true, cancel: false %></h2>
+
 <p><%= @product.category.name %></p>
 <p><%= @product.brand %></p>
 <p><%= pluralize(@product.units, "unit") %> available</p>
 <p>Price : Rs.<%= @product.price %></p>
 <p><%= @product.description %></p>
-
 <%if signed_in? %>
 <%if @cart_action == "Add to" %>
 Choose Quantity: <input type="text" id="quant" />
