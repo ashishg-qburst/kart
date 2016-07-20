@@ -27,9 +27,13 @@ Choose Quantity: <input type="text" id="quant" />
 
 <%if user_signed_in? %>
 <%= form_for @review do |f| %>
-<%= f.text_area :content %>
-<%= hidden_field_tag :user_id, current_user.id  %>
-<%= hidden_field_tag :product_id, @product.id %>
-<%= f.submit %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="form-group">
+    <%= label_tag(:content, "New Review:") %>
+    <%= f.text_area :content, class: "form-control" %>
+  </div>
+  <%= hidden_field_tag :user_id, current_user.id  %>
+  <%= hidden_field_tag :product_id, @product.id %>
+  <%= f.submit class: "btn btn-primary" %>
 <% end %>
 <% end %>

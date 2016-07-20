@@ -1,13 +1,13 @@
 class ReviewsController < ApplicationController
   def create
-    @review = Review.create(review_params)
-    @review.user_id = params[:user_id]
+    @review = current_user.reviews.build(review_params)
     @review.product_id = params[:product_id]
-    if @review.save!
+    if @review.save
       flash[:success] = "Post Successful"
       redirect_to product_path(params[:product_id])
     else
-      render 'static_pages/home'
+      flash[:danger] = "Could not submit review"
+      redirect_to product_path(params[:product_id])
     end
   end
 
