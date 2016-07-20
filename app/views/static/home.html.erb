@@ -1,5 +1,34 @@
 <% provide(:title, "Home") %>
+<% if current_user.try(:admin?) %>
+  <%= render 'shared/product_list' %>
+  <div class="row">
+  <div class="col-md-4 add-product-form">
+  <h4>Create New Product</h4>
+    <%= form_for @new_product do |f| %>
+      <div class="form-group">
+        <%= label_tag(:name, "Name:") %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= label_tag(:brand, "Brand:") %>
+        <%= f.text_field :brand, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= label_tag(:price, "Price:") %>
+        <%= f.text_field :price, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= label_tag(:category_id, "Category") %>
+        <%= collection_select(:categories, :name, @categories, :id, :name, prompt: true) %>
+      </div>
+      <%= f.submit "Add Product", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+  </div>
+<% else %>
 <%= render 'shared/catbar' %>
 <div class="center jumbotron">
-<p>Welcome</p>
-<p><%= link_to "View All Products", products_path %></p>
+  <p>Welcome</p>
+  <p><%= link_to "View All Products", products_path %></p>
+</div>
+<% end %>

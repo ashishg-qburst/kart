@@ -11,11 +11,16 @@ Category.create!(name: "Phones")
 Category.create!(name: "Footwear")
 cat = Category.all
 
+name = Faker::Name.name
+User.create!(name: name, email: "admin@kart.com", password: "foobar", password_confirmation: "foobar",
+              admin: true)
+
 10.times do
   name = Faker::Name.name
   email = Faker::Internet.email
+  admin = [true, false].sample
   User.create!(name: name, email: email,
-                password: "foobar", password_confirmation: "foobar")
+                password: "foobar", password_confirmation: "foobar", admin: admin)
 end
 
 10.times do

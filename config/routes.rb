@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :admins
   get 'orders/create'
 
   resources :orders, only: [:create]
