@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'ratyrate'
+gem 'ratyrate', git: "git://github.com/wazery/ratyrate.git" 
 
 gem 'redis', '~>3.2'
 gem 'hiredis'
