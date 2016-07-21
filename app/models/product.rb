@@ -16,4 +16,9 @@ class Product < ActiveRecord::Base
       "Add to"
     end
   end
+
+  def self.search(query)
+    where("name LIKE ?", "%#{ query }%")
+  end
+  
 end

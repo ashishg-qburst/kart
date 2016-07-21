@@ -1,9 +1,10 @@
-<%= render 'shared/catbar' %>
-<h2>Products</h2>
-<% if @products.any? %>
+<div class="row"><h2>Products</h2></div>
+
+<% if @products.present? %>
 <div class="row">
   <% @products.each do |product| %>
     <%= render partial: 'shared/product_card', locals: { product: product } %>
   <% end %>
 </div>
+
 <% end %>

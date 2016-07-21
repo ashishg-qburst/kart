@@ -6,7 +6,10 @@ $gray-medium-light: #eaeaea;
 body {
   padding-top: 60px;
 }
-
+h2 {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
 section {
   overflow: auto;
 }
@@ -48,14 +51,20 @@ textarea {
 /* catbar */
 .catbar{
   display: block;
-  height: 60px;
-  font-size: 1.5em;
-  padding-left: 10px;
+  height: 40px;
+  font-size: 1.2em;
   margin-top: 5px;
+  
   li {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+
+    a:selected {
+      background-color: black;
+      color: white;
+    }
   }
+
 }
 
 /* footer */
@@ -108,6 +117,7 @@ footer {
 
 .product-card {
   margin-bottom: 15px;
+  margin-top: 15px;
   .product-image{
     width: 100%;
     min-height: 100px;
@@ -115,4 +125,12 @@ footer {
       width: 100%;
     }
   }
+}
+
+.head-2 {
+  margin-bottom: 15px;
+}
+
+.search-products-form {
+  margin-top: 5px;
 }

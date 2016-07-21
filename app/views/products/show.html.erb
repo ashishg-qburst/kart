@@ -1,7 +1,10 @@
 <% provide(:title, @product.name) %>
-<%= render 'shared/catbar' %>
 <h2><%= @product.name %><%= rating_for @product, "product", disable_after_rate: true, cancel: false %></h2>
-
+<% if @product.image? %>
+  <%= image_tag(@product.image.url) %>
+<% else %>
+  <i class="fa fa-4x fa-picture-o" aria-hidden="true"></i>
+<% end %>
 <p><%= @product.category.name %></p>
 <p><%= @product.brand %></p>
 <p><%= pluralize(@product.units, "unit") %> available</p>
