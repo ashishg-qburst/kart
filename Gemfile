@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'carrierwave'
+gem 'mini_magick'
+
 gem 'ratyrate', git: "git://github.com/wazery/ratyrate.git" 
 
 gem 'redis', '~>3.2'

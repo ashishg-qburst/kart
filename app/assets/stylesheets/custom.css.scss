@@ -105,3 +105,14 @@ footer {
     color: $state-danger-text;
   }
 }
+
+.product-card {
+  margin-bottom: 15px;
+  .product-image{
+    width: 100%;
+    min-height: 100px;
+    img {
+      width: 100%;
+    }
+  }
+}

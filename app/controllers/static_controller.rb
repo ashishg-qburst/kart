@@ -3,6 +3,7 @@ class StaticController < ApplicationController
     @categories = get_categories
     @products = Product.all
     @new_product = Product.new
+    @new_category = Category.new
   end
 
   def about

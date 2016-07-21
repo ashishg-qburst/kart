@@ -5,6 +5,8 @@ class Product < ActiveRecord::Base
   validates :brand, presence: true
   validates :price, presence: true
 
+  mount_uploader :image, ProductImageUploader
+  
   ratyrate_rateable "product"
 
   def cart_action(current_user_id)
