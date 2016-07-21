@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resource :cart, only: [:show] do
     put 'add/:product_id', to: 'carts#add', as: :add_to
     put 'remove/:product_id', to: 'carts#remove', as: :remove_from
+    get 'buy/:product_id', to: 'carts#buy', as: :buy
   end  
 
   get 'carts/show'

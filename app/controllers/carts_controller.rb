@@ -17,6 +17,11 @@ class CartsController < ApplicationController
     render json: current_user.cart_count, status: 200
   end
 
+  def buy
+    $redis.sadd current_user_cart, params[:product_id]
+    redirect_to carts_show_path
+  end
+
   private
 
   def current_user_cart
