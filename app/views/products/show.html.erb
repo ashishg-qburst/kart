@@ -11,16 +11,16 @@
 <p>Price : Rs.<%= @product.price %></p>
 <p><%= @product.description %></p>
 
-<%if signed_in? %>
+<%if user_signed_in? && !current_user.try(:admin?) %>
+
 <%= link_to "", class: "button", data: {target: @cart_action, addUrl: add_to_cart_path(@product), removeUrl: remove_from_cart_path(@product)} do %>
-<div class="btn btn-primary cart-button">
-<i class="fa fa-shopping-cart" aria-hidden="true"></i>
-<span><%= @cart_action %></span> Cart
-</div>
+  <div class="btn btn-primary cart-button">
+  <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+  <span><%= @cart_action %></span> Cart
+  </div>
 <%end%>
 
 <%= link_to "Buy Now", buy_cart_path(@product), { class: "btn btn-success" } %>
-
 
 <%end%>
 
@@ -32,7 +32,7 @@
 <% end %>
 <% end %>
 
-<%if user_signed_in? %>
+<%if user_signed_in? && !current_user.try(:admin?)  %>
 <%= form_for @review do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="form-group">

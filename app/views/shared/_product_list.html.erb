@@ -11,13 +11,15 @@
   <tbody>
     <% if @products.any? %>
     <% @products.each do |product| %>
+      
       <tr>
         <td><%= product.id %></td>
-        <td><%= product.name %></td>
+        <td><%= link_to product.name, product_path(product.id) %></td>
         <td><%= product.brand %></td>
         <td><%= product.price %></td>
         <td><%= product.category.name %></td>
       </tr>
+      
     <% end %>
     <% end %>
   </tbody></table>
