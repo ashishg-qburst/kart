@@ -5,11 +5,14 @@ $gray-medium-light: #eaeaea;
 
 body {
   padding-top: 60px;
+  font-family: 'Open Sans', sans-serif;
 }
+
 h2 {
   margin-bottom: 20px;
   margin-top: 20px;
 }
+
 section {
   overflow: auto;
 }
@@ -116,12 +119,12 @@ footer {
 
 .cart-product, .product-card {
   margin-bottom: 15px;
-  margin-top: 15px;
+  padding: 5px;
 
   .product-image{
-    width: 100%;
-    min-height: 100px;
-    max-height: 194px;
+    width: auto;
+    height: 194px;
+    margin-top: 20px;
 
     img {
       width: 100%;
@@ -133,12 +136,31 @@ footer {
   }
 }
 
+.product-show-image {
+  margin-top: 20px;
+}
+
 .head-2 {
   margin-bottom: 15px;
 }
 
+.review-group {
+  margin-top: 30px;
+}
+
+.review {
+  background-color: #ddd;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.review-content {
+  padding-left: 10px;
+}
+
 .search-products-form {
-  margin-top: 5px;
+  margin-top: 8px;
 }
 
 .edit-product-form {

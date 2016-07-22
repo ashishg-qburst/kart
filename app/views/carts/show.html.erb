@@ -4,8 +4,8 @@
 
   <% @cart_products.each do |product| %>
 
-  <div class="col-md-3 cart-product">
-  
+  <div class="col-md-3">
+  <div class="cart-product">
     <div class="product-image">
     <% if product.image? %>
       <%= image_tag(product.image.url) %>
@@ -20,6 +20,7 @@
     <%=link_to "" , data: { targetUrl: remove_from_cart_path(product) } do%>
     <span class="cart-item">Remove from Cart</span>
     <%end%>
+  </div>
   </div>
   <% end %>
 

@@ -1,0 +1,11 @@
+<div class="row head-2">
+<div class="col-md-6 catbar">
+  <ul class="nav navbar-nav">
+  <% if @categories %>
+    <% @categories.each do |cat| %>
+      <li><%= link_to cat.name, category_path(cat) %></li>
+    <% end %>
+  <% end %>
+  </ul>
+</div>
+</div>
