@@ -4,7 +4,6 @@
 $gray-medium-light: #eaeaea;
 
 body {
-  padding-top: 60px;
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -19,6 +18,14 @@ section {
 
 textarea {
   resize: vertical;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
 }
 
 .center {
@@ -51,6 +58,16 @@ textarea {
   }
 }
 
+.main-nav {
+  ul {
+    li {
+      a{
+        padding-right: 15px;
+      }
+    }
+  }
+}
+
 /* catbar */
 .catbar{
   display: block;
@@ -61,7 +78,7 @@ textarea {
   li {
     padding-left: 5px;
     padding-right: 5px;
-
+    display: inline-block;
     a:selected {
       background-color: black;
       color: white;
@@ -120,19 +137,19 @@ footer {
 .cart-product, .product-card {
   margin-bottom: 15px;
   padding: 5px;
+  width: 100%;
 
-  .product-image{
-    width: auto;
+  i {
     height: 194px;
-    margin-top: 20px;
+  }
+  
+}
 
-    img {
-      width: 100%;
-    }
-
-    i {
-      height: 194px;
-    }
+.product-image{
+  margin-top: 20px;
+  img {
+    width: 100%;
+    max-height: 194px;
   }
 }
 
@@ -161,6 +178,9 @@ footer {
 
 .search-products-form {
   margin-top: 8px;
+  .search-box{
+    width: 180px;
+  }
 }
 
 .edit-product-form {
@@ -168,9 +188,19 @@ footer {
 }
 
 .cart-button {
-
   a {
     text-decoration: none;
     color: white;
+  }
+}
+
+@media(max-width: 767px) {
+  body {
+    .product-image{
+      img {
+        width: 100%;
+        max-height: 400px;
+      }
+    }
   }
 }

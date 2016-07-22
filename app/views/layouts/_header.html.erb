@@ -1,4 +1,4 @@
-<div class="container-fluid navbar navbar-fixed-top navbar-inverse">
+<div class="container-fluid navbar navbar-inverse">
 <header class="container">
 
     <%= link_to "Kart", root_path, id: "logo", class: "col-md-1" %>
@@ -7,14 +7,14 @@
     <div class="form-inline">
       <%= form_tag products_path, method: 'get' do |f| %>
         <div class="form-group">
-          <%= text_field_tag :search, params[:search], class: "form-control" %>
+          <%= text_field_tag :search, params[:search], class: "form-control search-box" %>
         </div>
         <%= submit_tag "Search", class: "btn btn-primary" %>
       <% end %>
     </div>
     </div>
 
-    <nav>
+    <nav class="main-nav col-md-6 text-center">
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? && !current_user.try(:admin?) %>
         <li>
@@ -24,9 +24,6 @@
             (<span class="cart-count"><%=current_user.cart_count%></span>)
           <%end%>
         </li>
-            <li id="user-email">
-              Signed in as: <%= current_user.email %>        
-            </li>
         <% end %>
         <li><%= link_to "Home", root_path %></li>
         <li><%= link_to "Help", '#' %></li>
