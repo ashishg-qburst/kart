@@ -139,10 +139,21 @@ footer {
   padding: 5px;
   width: 100%;
 
-  i {
+  h4 {
+    margin-top: 2px;
+  }
+}
+
+.product-card {
+    i {
     height: 194px;
   }
-  
+}
+
+.cart-button {
+  i {
+    height: auto;
+  }
 }
 
 .product-image{
@@ -150,6 +161,13 @@ footer {
   img {
     width: 100%;
     height: 194px;
+  }
+}
+
+.cart-image{
+  img {
+    width: 110px;
+    height: 82px;
   }
 }
 

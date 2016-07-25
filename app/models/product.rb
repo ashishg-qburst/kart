@@ -19,7 +19,7 @@ class Product < ActiveRecord::Base
   end
 
   def self.search(query)
-    where("name LIKE ?", "%#{ query }%")
+    where("name LIKE ? OR brand LIKE ?", "%#{ query }%", "%#{ query }%")
   end
   
 end

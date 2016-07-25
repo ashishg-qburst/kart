@@ -1,12 +1,12 @@
 <h2>My Cart</h2>
 <% if @cart_products.any? %>
 <div class="row" id="my-cart">
-
+<div class="col-md-4">
   <% @cart_products.each do |product| %>
 
-  <div class="col-md-3">
-  <div class="cart-product">
-    <div class="product-image">
+  
+  <div class="cart-product row">
+    <div class="cart-image col-md-4">
     <% if product.image? %>
       <%= image_tag(product.image.url) %>
     <% else %>
@@ -14,17 +14,24 @@
     <% end %>
     </div>
 
-    <h3><%= link_to product.name, product_path(product) %></h3>
-    <h4><%= product.brand %></h4>
-    <p><%= product.price %></p>
+    <div class="col-md-8">
+    <h4><%= link_to product.name, product_path(product) %></h4>
+    <b><%= product.brand %></b>
+    <p>Rs. <%= product.price %></p>
     <%=link_to "" , data: { targetUrl: remove_from_cart_path(product) } do%>
-    <span class="cart-item">Remove from Cart</span>
+    <span class="cart-item">
+    <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+    </span>
     <%end%>
+    </div>
   </div>
-  </div>
-  <% end %>
+   <% end %>
+</div>
 
-  <div class="col-md-3 checkout-form">
+ 
+
+
+  <div class="col-md-4 checkout-form">
     <%= form_for @order, html: {class: "order_form"} do |f| %>
     <div class="form-group">
       <%= label_tag(:name, "Name:") %>
@@ -37,9 +44,8 @@
     <div class="form-group">
       <%= label_tag(:pin, "Pincode:") %><%= f.text_field :pin, class: "form-control" %>
     </div>
-    <%= f.submit "Buy Now", class: "btn btn-success" %>
+    <%= f.submit "Proceed to Checkout", class: "btn btn-success" %>
     <% end %>
   </div>
 </div>
-
 <% end %>
