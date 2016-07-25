@@ -12,8 +12,11 @@ Category.create!(name: "Footwear")
 cat = Category.all
 
 name = Faker::Name.name
-User.create!(name: name, email: "admin@kart.com", password: "foobar", password_confirmation: "foobar",
+User.create!(name: name, email: "admin@kart.com", password: "password", password_confirmation: "password",
               admin: true)
+
+User.create!(name: name, email: "user@kart.com", password: "password", password_confirmation: "password",
+              admin: false)
 
 10.times do
   name = Faker::Name.name

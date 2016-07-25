@@ -6,8 +6,5 @@
     <%= render 'new_category_form' %>
   </div>
 <% else %>
-<div class="center jumbotron">
-  <p>Welcome</p>
-  <p><%= link_to "View All Products", products_path %></p>
-</div>
+<%= render :template => 'products/index' %>
 <% end %>
