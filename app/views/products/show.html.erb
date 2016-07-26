@@ -12,7 +12,7 @@
 
   <div class="col-md-4">
     <h2><%= @product.name %>
-    <%= rating_for @product, "product", disable_after_rate: true, cancel: false %></h2>
+    <%= rating_for @product, "product", disable_after_rate: false, cancel: false %></h2>
     <p><%= @product.brand %></p>
     <p>Price: <b>Rs. <%= @product.price %></b></p>
     <p><%= @product.description %></p>

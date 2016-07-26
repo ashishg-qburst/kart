@@ -7,7 +7,7 @@ class CategoriesController < ApplicationController
 
   def create
     @new_category = Category.new(category_params)
-    if @new_category.save!
+    if @new_category.save
       flash[:success] = "Added Product"
     else
       flash[:danger] = "Could not create product"
