@@ -15,4 +15,5 @@
 //= require_tree .
 //= require jquery.raty
 //= require ratyrate
+//= require jquery_nested_form
 //= require bootstrap-sprockets

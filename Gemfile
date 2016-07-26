@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'carrierwave'
-gem 'mini_magick'
+gem 'nested_form'
 
 gem 'ratyrate', git: "git://github.com/wazery/ratyrate.git" 
 

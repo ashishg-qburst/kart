@@ -2,7 +2,7 @@
 <div class="col-md-12 catbar">
   <ul>
   <% @categories.each do |cat| %>
-    <li><%= link_to cat.name, category_path(cat) %></li>
+    <li><%= link_to cat.name, category_path(cat), method: :get %></li>
   <% end %>
   </ul>
 </div>

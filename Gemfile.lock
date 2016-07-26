@@ -285,6 +285,7 @@ GEM
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     nenv (0.3.0)
+    nested_form (0.3.2)
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
@@ -422,6 +423,7 @@ DEPENDENCIES
   mini_backtrace
   mini_magick
   minitest-reporters
+  nested_form
   omniauth-google-oauth2
   rails (= 4.2.6)
   ratyrate!

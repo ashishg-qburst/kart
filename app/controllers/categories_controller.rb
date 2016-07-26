@@ -1,7 +1,9 @@
 class CategoriesController < ApplicationController
+  before_action :authenticate_admin!, only: [:new, :create]
+  
   def new
     @category = Category.new
-    2.times { @category.products.build }
+    @category.products.build
   end
 
   def create
@@ -22,6 +24,6 @@ class CategoriesController < ApplicationController
 
     private
       def category_params
-        params.require(:category).permit(:name, products_attributes: [:name, :brand, :price, :image])
+        params.require(:category).permit(:name, products_attributes: [:name, :brand, :price, :image, :_destroy])
       end
 end

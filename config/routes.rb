@@ -18,7 +18,10 @@ Rails.application.routes.draw do
 
   resources :products
 
-  resources :categories
+  authenticate :user do
+    resources :categories, only: [:new, :create, :edit, :update, :destroy]
+  end
+  resources :categories, only: [:index, :show]
   
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
   

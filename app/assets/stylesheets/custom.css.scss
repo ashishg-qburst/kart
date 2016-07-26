@@ -216,8 +216,14 @@ footer {
   }
 }
 
-.edit-product-form {
+.add-product-btn, .edit-product-form {
   margin-top: 15px;
+}
+
+.fields {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #ddd;
 }
 
 .cart-button {
