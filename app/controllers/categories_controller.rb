@@ -1,6 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :authenticate_admin!, only: [:new, :create]
-  
+
   def new
     @category = Category.new
     @category.products.build
