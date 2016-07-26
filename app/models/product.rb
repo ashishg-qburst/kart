@@ -4,7 +4,6 @@ class Product < ActiveRecord::Base
   validates :name, presence: true
   validates :brand, presence: true
   validates :price, presence: true
-  validates :category, presence: true
 
   mount_uploader :image, ProductImageUploader
   

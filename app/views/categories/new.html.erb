@@ -1,0 +1,12 @@
+<%= form_for @category do |f| %>
+  <div class="form-group">
+    <%= label_tag(:name, "Category Name:") %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+  Products:
+  <%= f.fields_for :products do |product_form| %>
+    <%= render 'product_fields', f: product_form %>
+  <% end %>
+
+  <%= f.submit "Submit", class: "btn btn-primary" %>
+<% end %>
