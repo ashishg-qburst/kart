@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   devise_for :admins
   get 'orders/create'
 
+  resources :items
+
   resources :orders, only: [:create]
 
   resources :reviews, only: [:create]
