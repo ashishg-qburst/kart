@@ -1,10 +1,7 @@
 class CartsController < ApplicationController
-  before_action :authenticate_user!
 
   def show
-    @categories = get_categories
-    cart_ids = $redis.smembers current_user_cart
-    @cart_products = Product.find(cart_ids)
+    @cart = Cart.find(session[:cart_id])
     @order = Order.new
   end
 

@@ -16,15 +16,7 @@
 
     <nav class="main-nav col-md-6 text-center">
       <ul class="nav navbar-nav navbar-right">
-        <% if user_signed_in? && !current_user.try(:admin?) %>
-        <li>
-          <%= link_to cart_path do%>
-            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-            My Cart
-            (<span class="cart-count"><%=current_user.cart_count%></span>)
-          <%end%>
-        </li>
-        <% end %>
+       
         <li><%= link_to "Home", root_path %></li>
         <li><%= link_to "Help", '#' %></li>
         <% if user_signed_in? %>
