@@ -1,13 +1,13 @@
 <% provide(:title, @product.name) %>
 <div class="row">
   <div class="col-md-4">
+    <% @attachments.each do |a| %>
     <div class="product-show-image">
-      <% if @product.image? %>
-        <%= image_tag(@product.image.url, class: "img-responsive") %>
-      <% else %>
-        <i class="fa fa-4x fa-picture-o" aria-hidden="true"></i>
+      <% if a.image? %>
+        <%= image_tag(a.image.url, class: "img-responsive") %>
       <% end %>
     </div>
+  <% end %>
   </div>
 
   <div class="col-md-4">
@@ -17,7 +17,7 @@
     <p>Price: <b>Rs. <%= @product.price %></b></p>
     <p><%= @product.description %></p>
 
-    <%if user_signed_in? && !current_user.try(:admin?) %>
+    <% if user_signed_in? && !current_user.try(:admin?) %>
 
     <%= link_to "", class: "button", data: {target: @cart_action, addUrl: add_to_cart_path(@product), removeUrl: remove_from_cart_path(@product)} do %>
       <div class="btn btn-primary cart-button">

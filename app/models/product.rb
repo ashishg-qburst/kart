@@ -1,5 +1,8 @@
 class Product < ActiveRecord::Base
   has_many :reviews
+  has_many :attachments, dependent: :destroy
+  accepts_nested_attributes_for :attachments, allow_destroy: true
+
   belongs_to :category
   validates :name, presence: true
   validates :brand, presence: true
