@@ -1,0 +1,30 @@
+<table class="table">
+  <thead class="thead-inverse">
+    <tr>
+      <th>#</th>
+      <th>Category Name</th>
+      <th>No. of Products</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @categories.any? %>
+    <% @categories.each do |category| %>
+      
+      <tr>
+        <td><%= category.id %></td>
+        <td><%= link_to category.name, category_path(category.id) %></td>
+        <td><%= category.products.count %></td>
+        <td><%= link_to category, method: :delete,
+            data: { confirm: "Are you sure?" } do%>
+            <i class="fa fa-trash" aria-hidden="true"></i>
+            <% end %>
+        </td>
+        <td><%= link_to edit_category_path(category) do%>
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+            <% end %>
+        </td>
+      </tr>
+      
+    <% end %>
+    <% end %>
+  </tbody></table>

@@ -5,12 +5,8 @@
         <%= label_tag(:name, "Name:") %>
         <%= f.text_field :name, class: "form-control" %>
       </div>
-      <%= f.submit "Add Category", class: "btn btn-primary" %>
+      <%= f.submit "Add Category", class: "btn btn-primary add-category-btn" %>
     <% end %>
-</div>
 
-<div class="col-md-4">
-  <p>
-      <%= link_to "Create new category and add products >", new_category_path %>
-    </p>
-    </div>
+    <%= link_to "Add Category + Products", new_category_path, class: "btn btn-primary" %>
+</div>

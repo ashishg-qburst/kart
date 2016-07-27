@@ -21,8 +21,32 @@ class CategoriesController < ApplicationController
     @products = Product.where(category_id: @category.id)
   end
 
+  def edit
+    @category = Category.find(params[:id])
+  end
+
+  def update
+    @category = Category.find(params[:id])
+    if @category.update_attributes(category_params)
+      flash[:success] = "Category Updated"
+    else
+      flash[:danger] = "Could not update category"
+    end
+    redirect_to root_path
+  end
+
+  def destroy
+    @category = Category.find(params[:id])
+    if @category.destroy
+      flash[:success] = "Category Deleted"
+    else
+      flash[:danger] = "Could not delete category"
+    end
+    redirect_to root_path
+  end
+
     private
       def category_params
-        params.require(:category).permit(:name, products_attributes: [:name, :brand, :price, :image, :_destroy])
+        params.require(:category).permit(:name, products_attributes: [:id, :name, :brand, :price, :image, :_destroy])
       end
 end
