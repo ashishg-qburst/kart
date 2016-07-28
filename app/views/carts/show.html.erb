@@ -1,10 +1,9 @@
 <h2>My Cart</h2>
+<%= button_to 'Empty Cart', @cart, method: :delete, data: { confirm: "Are you sure?" } %>
 <% if @cart.items.any? %>
 <div class="row" id="my-cart">
 <div class="col-md-4">
   <% @cart.items.each do |item| %>
-
-  
   <div class="cart-product row">
     <div class="cart-image col-md-4">
     <% if item.product.image? %>
@@ -16,12 +15,13 @@
 
     <div class="col-md-8">
     <h4><%= link_to item.product.name, product_path(item.product) %></h4>
-    <b><%= item.product.brand %></b>
+    Quantity <%= item.quantity %>
     <p>Rs. <%= item.product.price %></p>
 
     </div>
   </div>
    <% end %>
+   <p>Total: <%= @cart.total_price %></p>
 </div>
 
   <div class="col-md-4 checkout-form">

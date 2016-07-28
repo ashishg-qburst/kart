@@ -1,23 +1,19 @@
 class CartsController < ApplicationController
-
+  include CurrentCart
+  before_action :set_cart, only: [:show]
+  before_action :authenticate_user!
+  
   def show
     @cart = Cart.find(session[:cart_id])
     @order = Order.new
   end
 
-  def add
-    $redis.sadd current_user_cart, params[:product_id]
-    render json: current_user.cart_count, status: 200
-  end
-
-  def remove
-    $redis.srem current_user_cart, params[:product_id]
-    render json: current_user.cart_count, status: 200
-  end
-
-  def buy
-    $redis.sadd current_user_cart, params[:product_id]
-    redirect_to carts_show_path
+  def destroy
+    @cart = Cart.find(session[:cart_id])
+    @cart.destroy if @cart.id == session[:cart_id]
+    session[:cart_id] = nil
+    flash[:success] = "Cart Empty"
+    redirect_to root_path
   end
 
   private
