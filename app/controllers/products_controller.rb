@@ -9,10 +9,11 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @new_item = Item.new
     @categories = get_categories
     @product = Product.find(params[:id])
     @reviews = Review.where(product_id: @product.id)
-    @review = current_user.reviews.build if current_user  
+    @review = current_user.reviews.build if current_user
   end
 
   def create

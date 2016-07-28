@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
 
   def create
     product = Product.find(params[:product_id])
-    @item = @cart.add_product(params[:product_id])
+    @item = @cart.add_product(product.id, params[:item][:quantity])
     if @item.save
       flash[:success] = "Added Item"
     else
@@ -13,9 +13,9 @@ class ItemsController < ApplicationController
     end
     redirect_to root_path
   end
-  
+
   private
       def item_params
-        params.require(:item).permit(:product_id)
+        params.require(:item).permit(:product_id, item: [:quantity])
       end
 end
