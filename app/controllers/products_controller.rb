@@ -12,8 +12,7 @@ class ProductsController < ApplicationController
     @categories = get_categories
     @product = Product.find(params[:id])
     @reviews = Review.where(product_id: @product.id)
-    @review = current_user.reviews.build if current_user
-    @cart_action = @product.cart_action current_user.try :id
+    @review = current_user.reviews.build if current_user  
   end
 
   def create

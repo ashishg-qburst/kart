@@ -2,19 +2,19 @@
 <div class="product-card-top">
   <%= link_to product_path(product) do %>
   <div class="product-image">
-  <% if product.image? %>
-    <%= image_tag(product.image.url) %>
-  <% else %>
-    <i class="fa fa-4x fa-picture-o" aria-hidden="true"></i>
-  <% end %>
+    <% if product.image? %>
+      <%= image_tag(product.image.url) %>
+    <% else %>
+      <i class="fa fa-4x fa-picture-o" aria-hidden="true"></i>
+    <% end %>
   </div>
   <h3><%= product.name %></h3>
   <%= rating_for product, "product", disable_after_rate: false, cancel: false %>
   <h4><%= product.brand %></h4>
   <p>Rs. <%= product.price %></p>
   <% end %>
-  
-  
 </div>
-<%= button_to "Add to Cart", items_path(product_id: product), class: "btn btn-primary" %>
+<% unless @cart_products.include?(product.id) %>
+  <%= button_to "Add to Cart", items_path(product_id: product), class: "btn btn-primary" %>
+<% end %>
 </div>
