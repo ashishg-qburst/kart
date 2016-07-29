@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   def index
     @categories = get_categories
-     if params[:search]
+    if params[:search]
       @products = Product.search(params[:search])
     else
       @products = Product.all
