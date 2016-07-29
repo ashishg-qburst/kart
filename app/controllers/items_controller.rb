@@ -1,7 +1,5 @@
 class ItemsController < ApplicationController
 
-  before_action :authenticate_user!, only: [:create]
-
   def create
     product = Product.find(params[:product_id])
     @item = @cart.add_product(product.id, params.has_key?(:item) ? params[:item][:quantity] : 1)
@@ -16,7 +14,7 @@ class ItemsController < ApplicationController
   def destroy
     cart_item = Item.find(params[:id])
     cart_item.destroy
-    redirect_to cart_url
+    redirect_to request.referer
   end
 
   private

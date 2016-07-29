@@ -1,7 +1,4 @@
 class CartsController < ApplicationController
-  include CurrentCart
-  before_action :set_cart, only: [:show]
-  before_action :authenticate_user!
   
   def show
     @cart = Cart.find(session[:cart_id])

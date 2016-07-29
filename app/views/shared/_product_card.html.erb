@@ -14,7 +14,10 @@
   <p>Rs. <%= product.price %></p>
   <% end %>
 </div>
-<% unless @cart_products && @cart_products.include?(product.id) %>
-  <%= button_to "Add to Cart", items_path(product_id: product), class: "btn btn-primary" %>
-<% end %>
+  <% unless @cart_products && @cart_products.include?(product.id) %>
+    <%= button_to "Add to Cart", items_path(product_id: product), class: "btn btn-primary" %>
+  <% else %>
+        <%= link_to "Remove from cart", @cart.items.find_by(product_id: product.id), method: :delete,
+            data: { confirm: "Are you sure?" }, class: "btn btn-primary" %>
+  <% end %>
 </div>
