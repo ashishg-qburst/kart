@@ -17,7 +17,6 @@
     <p>Price: <b>Rs. <%= @product.price %></b></p>
     <p><%= @product.description %></p>
 
-    <%if user_signed_in? && !current_user.try(:admin?) %>
       <% unless @cart_products && @cart_products.include?(@product.id) %>
       <%= form_for @new_item do |f| %>
         <div class="form-group">
@@ -28,8 +27,7 @@
       <%= f.submit "Add to Cart", class: "btn btn-primary" %>
       <% end %>
       <% end %>
-    <% end %>
-
+      
   </div>
 </div>
 <div class="row review-group">

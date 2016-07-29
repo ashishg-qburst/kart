@@ -15,10 +15,4 @@ class CartsController < ApplicationController
     flash[:success] = "Cart Empty"
     redirect_to root_path
   end
-
-  private
-
-  def current_user_cart
-    "cart#{current_user.id}"
-  end
 end

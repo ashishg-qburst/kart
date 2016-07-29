@@ -1,17 +1,22 @@
 class ItemsController < ApplicationController
-  include CurrentCart
-  before_action :set_cart, only: [:create]
-  before_action :authenticate_user!
+
+  before_action :authenticate_user!, only: [:create]
 
   def create
     product = Product.find(params[:product_id])
-    @item = @cart.add_product(product.id, params[:item][:quantity])
+    @item = @cart.add_product(product.id, params.has_key?(:item) ? params[:item][:quantity] : 1)
     if @item.save
       flash[:success] = "Added Item"
     else
       flash[:danger] = "Could not create item"
     end
-    redirect_to root_path
+    redirect_to request.referer
+  end
+
+  def destroy
+    cart_item = Item.find(params[:id])
+    cart_item.destroy
+    redirect_to cart_url
   end
 
   private
