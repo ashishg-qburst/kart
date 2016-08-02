@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   devise_for :admins
   get 'orders/create'
 
+  get '/search', to: 'search#index'
+  
   resources :orders, only: [:create]
 
   resources :reviews, only: [:create]

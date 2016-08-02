@@ -3,13 +3,8 @@ class ProductsController < ApplicationController
     @categories = get_categories
      if params[:search]
       @products = Product.search(params[:search])
-      @categories = Category.search(params[:search])
     else
       @products = Product.all
-    end
-    respond_to do |format|
-      format.html
-      format.json { render json: { products: @products, categories: @categories }}
     end
   end
 

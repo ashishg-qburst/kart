@@ -1,12 +1,11 @@
 var ready;
 ready = function() {
-
    $('#search-box').keyup(function () {
     $.ajax({
       type: "GET",
-      url: '/products',
+      url: '/search',
       data: {
-        "search": $('#search-box').val()
+        "query": $('#search-box').val()
       },
       dataType: "JSON",
       success: function(json) {
