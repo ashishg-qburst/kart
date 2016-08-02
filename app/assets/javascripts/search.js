@@ -17,11 +17,13 @@ ready = function() {
   
       $('#search-results').empty();
       $.each(json.categories, function(key, value){
-        $('#search-results').append($("<p>").text(value.name))
+        str = "<a href=\"/categories/" + value.id + "\">" + value.name + "</a>"
+        $('#search-results').append($("<p>").html(str))
       });
 
       $.each(json.products, function (key, value){
-        $('#search-results').append($("<p>").text(value.name + ", " + value.brand));
+        str = "<a href=\"/products/" + value.id + "\">" + value.name + ", " + value.brand + "</a>"
+        $('#search-results').append($("<p>").html(str));
       });
     }
   });
