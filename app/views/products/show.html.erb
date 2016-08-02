@@ -24,11 +24,10 @@
           <%= label_tag(:quantity, "Quantity:") %>
           <%= f.text_field :quantity, class: "form-control" %>
         </div>
-        <%= f.submit "Add to Cart", class: "btn btn-primary" %>
+        <%= f.submit "Add to Cart", class: "btn btn-primary add-btn" %>
         <% end %>
       <% else %>
-        <%= link_to "Remove from cart", @item, method: :delete,
-        data: { confirm: "Are you sure?" }, class: "btn btn-primary" %>
+        <%= link_to "Remove from cart", @item, method: :delete, remote: true, class: "btn btn-primary remove-btn" %>
       <% end %>
   </div>
 </div>

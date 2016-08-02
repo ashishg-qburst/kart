@@ -17,7 +17,7 @@
   <% unless @cart_products && @cart_products.include?(product.id) %>
     <%= button_to "Add to Cart", items_path(product_id: product), class: "btn btn-primary add-btn", remote: true %>
   <% else %>
-        <%= link_to "Remove from cart", @cart.items.find_by(product_id: product.id), method: :delete,
-            data: { confirm: "Are you sure?" }, class: "btn btn-primary" %>
-  <% end %>
+    <%= link_to "Remove from cart", @cart.items.find_by(product_id: product.id), method: :delete,
+      remote: true, class: "btn btn-primary remove-btn" %>
+<% end %>
 </div>

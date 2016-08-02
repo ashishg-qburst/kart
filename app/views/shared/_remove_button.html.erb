@@ -1,2 +1,2 @@
-<%= link_to "Remove from cart", @item, method: :delete,
-data: { confirm: "Are you sure?" }, class: "btn btn-primary remove-btn" %>
+<%= link_to "Remove from cart", @item, method: :delete, remote: true,
+  class: "btn btn-primary remove-btn" %>

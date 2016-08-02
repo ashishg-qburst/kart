@@ -1,10 +1,15 @@
 $('#cart-count').html("<%= j (link_to "My Cart (" + @cart.items.count.to_s + ")", cart_path(session[:cart_id])) %>");
 $('#new_item').slideUp(350);
 $('#new_item').remove();
-$('.product-info').append("<%= j(render 'shared/remove_button') %>");
 
 $pc = $('.product-card-<%= @item.product_id %>');
 if($pc){
   $pc.find('.add-btn').remove();
   $pc.append("<%= j(render 'shared/remove_button') %>");
+}
+
+$pinfo = $('.product-info');
+if($pinfo){
+  $pinfo.find('.add-btn').remove();
+  $pinfo.append("<%= j(render 'shared/remove_button') %>");
 }
