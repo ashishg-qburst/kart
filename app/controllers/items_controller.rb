@@ -4,11 +4,13 @@ class ItemsController < ApplicationController
     product = Product.find(params[:product_id])
     @item = @cart.add_product(product.id, params.has_key?(:item) ? params[:item][:quantity] : 1)
     if @item.save
-      flash[:success] = "Added Item"
+      flash.now[:success] = "Added Item"
     else
-      flash[:danger] = "Could not create item"
+      flash.now[:danger] = "Could not create item"
     end
-    redirect_to request.referer
+    respond_to do |format|
+      format.js
+    end
   end
 
   def destroy

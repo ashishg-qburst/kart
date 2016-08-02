@@ -17,7 +17,7 @@
     <nav class="main-nav col-md-6 text-center">
       <ul class="nav navbar-nav navbar-right">
        
-        <li><%= link_to "My Cart (" + @cart.items.count.to_s + ")", cart_path(session[:cart_id]) %></li>
+        <li id="cart-count"><%= link_to "My Cart (" + @cart.items.count.to_s + ")", cart_path(session[:cart_id]) %></li>
         <% if user_signed_in? %>
           <li>
             <%= link_to current_user.email, cart_path(session[:cart_id]) %>
