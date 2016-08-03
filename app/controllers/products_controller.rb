@@ -12,6 +12,7 @@ class ProductsController < ApplicationController
     @categories = get_categories
     @product = Product.find(params[:id])
     @attachments = @product.attachments.all
+    @first_image = @attachments.first
     @reviews = Review.where(product_id: @product.id)
     @review = current_user.reviews.build if current_user
     @cart_action = @product.cart_action current_user.try :id
@@ -27,9 +28,6 @@ class ProductsController < ApplicationController
     cat = Category.find(params[:categories][:name])
     @new_product.category_id = cat.id
     if @new_product.save
-      params[:attachments][:image].each do |e|
-        @attachment = @new_product.attachments.create!(image: e)
-      end
       flash[:success] = "Added Product"
     else
       flash[:danger] = "Could not create product"
@@ -66,7 +64,7 @@ class ProductsController < ApplicationController
 
   private
       def product_params
-        params.require(:product).permit(:name, :brand, :price, :image,
+        params.require(:product).permit(:name, :brand, :price,
           attachments_attributes: [:id, :product_id, :image, :_destroy])
       end
 end
