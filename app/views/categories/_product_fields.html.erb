@@ -11,6 +11,8 @@
   <%= f.text_field :price, class: "form-control" %>
 </div>
 <div class="form-group">
-  <%= label_tag(:image, "Choose Product Image:") %>
-  <%= f.file_field :image %>
+  <%= f.fields_for :attachments do |a| %>
+  <%= render 'shared/image_fields', a: a %>
+  <% end %>
+  <p><%= f.link_to_add "Add an image", :attachments %></p>
 </div>
