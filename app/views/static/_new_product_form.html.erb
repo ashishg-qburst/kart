@@ -19,9 +19,7 @@
       </div>
       <div class="form-group">
         <%= f.fields_for :attachments do |a| %>
-          <%= a.label :image %></br>
-          <%= a.file_field :image %>
-          <%= a.link_to_remove "Remove this image" %>
+          <%= render 'shared/image_fields', a: a %>
         <% end %>
         <p><%= f.link_to_add "Add an image", :attachments %></p>
       </div>

@@ -38,6 +38,8 @@ class ProductsController < ApplicationController
   def edit
     @categories = get_categories
     @product = Product.find(params[:id])
+    @attachments = @product.attachments.all
+    @first_image = @attachments.first
   end
 
   def update
