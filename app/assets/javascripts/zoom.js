@@ -4,7 +4,7 @@ ready = function() {
     .wrap('<span style="display:inline-block"></span>')
     .css('display', 'block')
     .parent()
-    .zoom(magnify = 2);
+    .zoom();
 
     $('.product-image-thumb > img').click(function(){
       url = $(this).attr('src');
