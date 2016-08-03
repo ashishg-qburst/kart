@@ -17,7 +17,7 @@
         <%= label_tag(:category_id, "Category:") %>
         <%= collection_select(:categories, :name, @categories, :id, :name, prompt: true) %>
       </div>
-      <div class="form-group fields">
+      <div class="form-group">
         <%= f.fields_for :attachments do |a| %>
           <%= a.label :image %></br>
           <%= a.file_field :image %>
