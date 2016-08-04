@@ -2,9 +2,9 @@ class ProductsController < ApplicationController
   def index
     @categories = get_categories
     if params[:search]
-      @products = Product.search(params[:search]).page(params[:page]).per(10)
+      @products = Product.search(params[:search]).page(params[:page]).per(8)
     else
-      @products = Product.page(params[:page]).per(10)
+      @products = Product.page(params[:page]).per(8)
     end
   end
 
