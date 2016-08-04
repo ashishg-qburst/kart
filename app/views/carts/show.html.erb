@@ -1,13 +1,17 @@
-<h2>My Cart</h2>
-<% if @cart_products.any? %>
-<div class="row" id="my-cart">
-<div class="col-md-4">
-  <% @cart_products.each do |product| %>
+<h2>My Cart
+<%= link_to @cart, method: :delete,
+            data: { confirm: "Are you sure?" } do%>
+            <i class="fa fa-trash" aria-hidden="true"></i>
+            <% end %>
+</h2>
 
-  
+<% if @cart.items.any? %>
+<div class="row" id="my-cart">
+<div class="col-md-4"> 
+  <% @cart.items.each do |item| %>
   <div class="cart-product row">
     <div class="cart-image col-md-4">
-    <% if product.image? %>
+    <% if item.product.image? %>
       <%= image_tag(product.image.url) %>
     <% else %>
       <i class="fa fa-4x fa-picture-o" aria-hidden="true"></i>
@@ -15,21 +19,18 @@
     </div>
 
     <div class="col-md-8">
-    <h4><%= link_to product.name, product_path(product) %></h4>
-    <b><%= product.brand %></b>
-    <p>Rs. <%= product.price %></p>
-    <%=link_to "" , data: { targetUrl: remove_from_cart_path(product) } do%>
-    <span class="cart-item">
-    <i class="fa fa-minus-square-o" aria-hidden="true"></i>
-    </span>
-    <%end%>
+    <h4><%= link_to item.product.name, product_path(item.product) %></h4>
+    Quantity <%= item.quantity %>
+    <p>Rs. <%= item.product.price %></p>
+    <%= link_to item, method: :delete,
+            data: { confirm: "Are you sure?" } do%>
+            <i class="fa fa-trash" aria-hidden="true"></i>
+            <% end %>
     </div>
   </div>
-   <% end %>
+ <% end %>
+ <p>Total: <%= @cart.total_price %></p>
 </div>
-
- 
-
 
   <div class="col-md-4 checkout-form">
     <%= form_for @order, html: {class: "order_form"} do |f| %>

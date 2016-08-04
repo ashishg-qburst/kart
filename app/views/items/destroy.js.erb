@@ -1,0 +1,13 @@
+$('#cart-count').html("<%= j (link_to "My Cart (" + @cart.items.count.to_s + ")", cart_path(session[:cart_id])) %>");
+
+$pc = $('.product-card-<%= @product.id %>');
+if($pc){
+  $pc.find('.remove-btn').remove();
+  $pc.append("<%= j(render 'shared/add_button', product: @product) %>");
+}
+
+$pinfo = $('.product-info');
+if($pinfo){
+  $pinfo.find('.remove-btn').remove();
+  $pinfo.append("<%= j(render 'shared/add_item_form') %>");
+}

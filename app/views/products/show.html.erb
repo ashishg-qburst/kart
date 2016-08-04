@@ -13,24 +13,20 @@
   <% end %>
   </div>
 
-  <div class="col-md-4">
+  <div class="col-md-4 product-info">
     <h2><%= @product.name %>
     <%= rating_for @product, "product", disable_after_rate: false, cancel: false %></h2>
     <p><%= @product.brand %></p>
     <p>Price: <b>Rs. <%= @product.price %></b></p>
     <p><%= @product.description %></p>
 
-    <% if user_signed_in? && !current_user.try(:admin?) %>
 
-    <%= link_to "", class: "button", data: {target: @cart_action, addUrl: add_to_cart_path(@product), removeUrl: remove_from_cart_path(@product)} do %>
-      <div class="btn btn-primary cart-button">
-      <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-      <span><%= @cart_action %></span> Cart
-      </div>
-    <% end %>
-    <% end %>
-    <%= link_to "Buy Now", buy_cart_path(@product), { class: "btn btn-success" } %>
-
+      <% unless @cart_products && @cart_products.include?(@product.id) %>
+        <%= render 'shared/add_item_form' %>
+      <% else %>
+        <%= link_to "Remove from cart", @item, method: :delete, remote: true, class: "btn btn-primary remove-btn" %>
+      <% end %>
+      
   </div>
 </div>
 <div class="row review-group">

@@ -1,10 +1,10 @@
 class ProductsController < ApplicationController
   def index
     @categories = get_categories
-     if params[:search]
-      @products = Product.search(params[:search])
+    if params[:search]
+      @products = Product.search(params[:search]).page(params[:page]).per(10)
     else
-      @products = Product.all
+      @products = Product.page(params[:page]).per(10)
     end
   end
 
@@ -15,7 +15,8 @@ class ProductsController < ApplicationController
     @first_image = @attachments.first
     @reviews = Review.where(product_id: @product.id)
     @review = current_user.reviews.build if current_user
-    @cart_action = @product.cart_action current_user.try :id
+    @item = @cart.items.find_by(product_id: @product.id)
+    @item ||= Item.new
   end
 
   def new
