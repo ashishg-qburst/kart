@@ -17,6 +17,8 @@ class ItemsController < ApplicationController
     cart_item = Item.find(params[:id])
     @product = Product.find(cart_item.product_id)
     cart_item.destroy
+    @item = @cart.items.find_by(product_id: @product.id)
+    @item ||= Item.new
     respond_to do |format|
       format.js
     end

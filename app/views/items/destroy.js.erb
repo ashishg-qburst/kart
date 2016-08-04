@@ -9,5 +9,5 @@ if($pc){
 $pinfo = $('.product-info');
 if($pinfo){
   $pinfo.find('.remove-btn').remove();
-  $pinfo.append("<%= j(render 'shared/add_button', product: @product) %>");
+  $pinfo.append("<%= j(render 'shared/add_item_form') %>");
 }
