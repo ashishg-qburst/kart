@@ -7,11 +7,12 @@
     <div class="form-inline">
       <%= form_tag products_path, method: 'get' do |f| %>
         <div class="form-group">
-          <%= text_field_tag :search, params[:search], class: "form-control search-box" %>
+          <%= text_field_tag :search, params[:query], class: "form-control", id: "search-box" %>
         </div>
         <%= submit_tag "Search", class: "btn btn-primary" %>
       <% end %>
     </div>
+    
     </div>
 
     <nav class="main-nav col-md-6 text-center">
