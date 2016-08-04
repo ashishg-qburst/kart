@@ -20,6 +20,7 @@ class ItemsController < ApplicationController
     @item = @cart.items.find_by(product_id: @product.id)
     @item ||= Item.new
     respond_to do |format|
+      format.html { redirect_to cart_path }
       format.js
     end
   end
