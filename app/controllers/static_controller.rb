@@ -1,7 +1,7 @@
 class StaticController < ApplicationController
   def home
     @categories = get_categories
-    @products = Product.all
+    @products = Product.page(params[:page]).per(10)
     @new_product = Product.new
     @new_category = Category.new
   end
