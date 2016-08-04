@@ -19,23 +19,21 @@
     <p><%= @product.brand %></p>
     <p>Price: <b>Rs. <%= @product.price %></b></p>
     <p><%= @product.description %></p>
-
-
-      <% unless @cart_products && @cart_products.include?(@product.id) %>
-        <%= render 'shared/add_item_form' %>
-      <% else %>
-        <%= link_to "Remove from cart", @item, method: :delete, remote: true, class: "btn btn-primary remove-btn" %>
-      <% end %>
-      
+    <% unless @cart_products && @cart_products.include?(@product.id) %>
+      <%= render 'shared/add_item_form' %>
+    <% else %>
+      <%= link_to "Remove from cart", @item, method: :delete, remote: true, class: "btn btn-primary remove-btn" %>
+    <% end %>
   </div>
 </div>
+
 <div class="row review-group">
-<div class="col-md-12">
-  <h3>Reviews</h3>
+  <div class="col-md-12">
+    <h3>Reviews</h3>
   </div>
 
-<% if @reviews.any? %>
-<div class="col-md-6">
+  <% if @reviews.any? %>
+  <div class="col-md-6">
     <% @reviews.each do |review| %>
     <div class="review">
       <p class="review-author"><b><%= review.user.email %></b></p>
@@ -43,25 +41,24 @@
         <i><%= review.content %></i>
       </div>
     </div>
-  <% end %>
-</div>
-<% end %>
-
-
-<div class="col-md-6">
-<div class="review-form">
-<%if user_signed_in? && !current_user.try(:admin?)  %>
-<%= form_for @review do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-  <div class="form-group">
-    <%= label_tag(:content, "New Review:") %>
-    <%= f.text_area :content, class: "form-control" %>
+    <% end %>
   </div>
-  <%= hidden_field_tag :user_id, current_user.id  %>
-  <%= hidden_field_tag :product_id, @product.id %>
-  <%= f.submit class: "btn btn-primary" %>
-<% end %>
-<% end %>
-</div>
-</div>
+  <% end %>
+
+  <div class="col-md-6">
+  <div class="review-form">
+  <%if user_signed_in? && !current_user.try(:admin?)  %>
+  <%= form_for @review do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class="form-group">
+      <%= label_tag(:content, "New Review:") %>
+      <%= f.text_area :content, class: "form-control" %>
+    </div>
+    <%= hidden_field_tag :user_id, current_user.id  %>
+    <%= hidden_field_tag :product_id, @product.id %>
+    <%= f.submit class: "btn btn-primary" %>
+  <% end %>
+  <% end %>
+  </div>
+  </div>
 </div>

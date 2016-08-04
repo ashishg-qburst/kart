@@ -10,7 +10,8 @@
             data: { confirm: "Are you sure?" } do%>
             <i class="fa fa-trash" aria-hidden="true"></i>
             <% end %>
-    </p>
+  </p>
+
   Products:
   <%= f.fields_for :products do |product_form| %>
     <%= render 'product_fields', f: product_form %>

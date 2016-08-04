@@ -1,4 +1,9 @@
 class CategoriesController < ApplicationController
+  def show
+    @categories = get_categories
+    @category = Category.find(params[:id])
+    @products = Product.where(category_id: @category.id).page(params[:page]).per(8)
+  end
 
   def new
     @category = Category.new
@@ -12,12 +17,6 @@ class CategoriesController < ApplicationController
       flash[:danger] = "Could not create category"
     end
     redirect_to root_path
-  end
-
-  def show
-    @categories = get_categories
-    @category = Category.find(params[:id])
-    @products = Product.where(category_id: @category.id).page(params[:page]).per(8)
   end
 
   def edit
@@ -44,10 +43,10 @@ class CategoriesController < ApplicationController
     redirect_to root_path
   end
 
-    private
-      def category_params
-        params.require(:category).permit(:name,
-          products_attributes: [:id, :name, :brand, :price, :_destroy,
-            attachments_attributes: [:id, :product_id, :image, :_destroy]])
-      end
+  private
+  def category_params
+    params.require(:category).permit(:name,
+      products_attributes: [:id, :name, :brand, :price, :_destroy,
+        attachments_attributes: [:id, :product_id, :image, :_destroy]])
+  end
 end

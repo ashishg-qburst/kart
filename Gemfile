@@ -74,5 +74,3 @@ group :test do
   gem 'guard-minitest'
   gem 'guard'
 end
-
-

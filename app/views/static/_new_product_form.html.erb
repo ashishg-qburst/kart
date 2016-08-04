@@ -1,28 +1,28 @@
 <div class="col-md-4 add-product-form">
   <h4>Create New Product</h4>
-    <%= nested_form_for @new_product, html: { multipart: true } do |f| %>
-      <div class="form-group">
-        <%= label_tag(:name, "Name:") %>
-        <%= f.text_field :name, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= label_tag(:brand, "Brand:") %>
-        <%= f.text_field :brand, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= label_tag(:price, "Price:") %>
-        <%= f.text_field :price, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= label_tag(:category_id, "Category:") %>
-        <%= collection_select(:categories, :name, @categories, :id, :name, prompt: true) %>
-      </div>
-      <div class="form-group">
-        <%= f.fields_for :attachments do |a| %>
-          <%= render 'shared/image_fields', a: a %>
-        <% end %>
-        <p><%= f.link_to_add "Add an image", :attachments %></p>
-      </div>
-      <%= f.submit "Add Product", class: "btn btn-primary" %>
-    <% end %>
+  <%= nested_form_for @new_product, html: { multipart: true } do |f| %>
+    <div class="form-group">
+      <%= label_tag(:name, "Name:") %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= label_tag(:brand, "Brand:") %>
+      <%= f.text_field :brand, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= label_tag(:price, "Price:") %>
+      <%= f.text_field :price, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= label_tag(:category_id, "Category:") %>
+      <%= collection_select(:categories, :name, @categories, :id, :name, prompt: true) %>
+    </div>
+    <div class="form-group">
+      <%= f.fields_for :attachments do |a| %>
+        <%= render 'shared/image_fields', a: a %>
+      <% end %>
+      <p><%= f.link_to_add "Add an image", :attachments %></p>
+    </div>
+    <%= f.submit "Add Product", class: "btn btn-primary" %>
+  <% end %>
 </div>

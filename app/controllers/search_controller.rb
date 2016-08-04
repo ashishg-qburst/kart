@@ -1,5 +1,4 @@
 class SearchController < ApplicationController
-
   def index
     if !params[:query].blank?
       @products = Product.search(params[:query])
@@ -7,6 +6,7 @@ class SearchController < ApplicationController
     else
       @products = nil
     end
+    
     respond_to do |format|
       format.html
       format.json { render json: { products: @products, categories: @categories }}

@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   
-  post '/rate' => 'rater#create', :as => 'rate'
   devise_for :admins
+  devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" } 
+
+  post '/rate' => 'rater#create', :as => 'rate'
   get 'orders/create'
-  
   get '/search', to: 'search#index'
 
   resources :items
@@ -20,8 +21,6 @@ Rails.application.routes.draw do
     resources :categories, only: [:new, :create, :edit, :update, :destroy]
   end
   resources :categories, only: [:index, :show]
-  
-  devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
   
   root  'static#home'
 

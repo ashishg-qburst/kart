@@ -1,5 +1,4 @@
 class ItemsController < ApplicationController
-
   def create
     product = Product.find(params[:product_id])
     @item = @cart.add_product(product.id, params.has_key?(:item) ? params[:item][:quantity] : 1)
