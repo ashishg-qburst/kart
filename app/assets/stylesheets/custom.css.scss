@@ -84,23 +84,22 @@ a {
 }
 
 /* catbar */
-.catbar{
-  display: block;
-  height: 40px;
-  font-size: 1.2em;
-  margin-top: 5px;
+// .catbar{
+//   display: block;
+//   height: 40px;
+//   font-size: 1.2em;
+//   margin-top: 5px;
   
-  li {
-    padding-left: 5px;
-    padding-right: 5px;
-    display: inline-block;
-    a:selected {
-      background-color: black;
-      color: white;
-    }
-  }
-
-}
+//   li {
+//     padding-left: 5px;
+//     padding-right: 5px;
+//     display: inline-block;
+//     a:selected {
+//       background-color: black;
+//       color: white;
+//     }
+//   }
+// }
 
 /* footer */
 footer {

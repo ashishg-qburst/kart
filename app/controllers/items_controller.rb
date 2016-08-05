@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
   def create
     product = Product.find(params[:product_id])
-    @item = @cart.add_product(product.id, params.has_key?(:item) ? params[:item][:quantity] : 1)
+    @item = @cart.add_product(product.id,
+      (params.has_key?(:item) && params[:item][:quantity].to_i > 0) ? params[:item][:quantity] : 1)
     if @item.save
       flash.now[:success] = "Added Item"
     else

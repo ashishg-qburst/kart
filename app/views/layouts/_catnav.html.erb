@@ -1,6 +1,6 @@
 <div class="row head-2 text-center">
 <div class="col-md-12 catbar">
-  <ul>
+  <ul class="nav nav-tabs">
   <% @categories.each do |cat| %>
     <li><%= link_to cat.name, category_path(cat), method: :get %></li>
   <% end %>
