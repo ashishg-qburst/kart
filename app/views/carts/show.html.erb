@@ -10,11 +10,11 @@
   <% @cart.items.each do |item| %>
   <div class="cart-product row">
     <div class="cart-image col-md-4">
-      <% if item.product.image? %>
-        <%= image_tag(product.image.url) %>
-      <% else %>
-        <i class="fa fa-4x fa-picture-o" aria-hidden="true"></i>
-      <% end %>
+      <% if item.product.attachments.first.present? %>
+      <%= image_tag(item.product.attachments.first.image.url) %>
+    <% else %>
+      <i class="fa fa-4x fa-picture-o" aria-hidden="true"></i>
+    <% end %>
     </div>
 
     <div class="col-md-8">

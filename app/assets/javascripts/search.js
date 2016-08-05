@@ -19,7 +19,7 @@ ready = function() {
         
         $.each(json.categories, function(key, value){
           str = "<a href=\"/categories/" + value.id + "\">" + value.name + "</a>"
-          $('#search-results').append($("<p>").html(str))
+          $('#search-results').append($("<p class='cat-item'>").html(str))
         });
 
         $.each(json.products, function (key, value){
