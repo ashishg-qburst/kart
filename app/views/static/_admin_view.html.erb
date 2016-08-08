@@ -1,14 +1,14 @@
 <div class="container">
   <ul class="nav nav-tabs">
-    <li class="nav active"><a href="#categories" data-toggle="tab">Categories</a></li>
     <li class="nav"><a href="#products" data-toggle="tab">Products</a></li>
+    <li class="nav"><a href="#categories" data-toggle="tab">Categories</a></li>
     <li class="nav"><a href="#new-product" data-toggle="tab">New Product</a></li>
     <li class="nav"><a href="#new-category" data-toggle="tab">New Category</a></li>
   </ul>
 
   <div class="tab-content">
-    <div class="tab-pane fade in active" id="categories"><%= render 'shared/category_list' %></div>
-    <div class="tab-pane fade" id="products"><%= render 'shared/product_list' %></div>
+    <div class="tab-pane fade in active" id="products"><%= render 'shared/product_list' %></div>
+    <div class="tab-pane fade" id="categories"><%= render 'shared/category_list' %></div>
     <div class="tab-pane fade" id="new-product"><%= render 'new_product_form' %></div>
     <div class="tab-pane fade" id="new-category"><%= render 'new_category_form' %></div>
   </div>

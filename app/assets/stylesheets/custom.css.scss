@@ -118,6 +118,11 @@ footer {
 }
 
 /* products */
+
+.cart-product {
+  margin-bottom: 10px;
+}
+
 .cart-product, .product-top {
   width: 100%;
   h4 {
@@ -163,8 +168,8 @@ footer {
 
 .cart-image{
   img {
-    width: 110px;
-    height: 82px;
+    width: 86px;
+    height: 60px;
   }
 }
 
