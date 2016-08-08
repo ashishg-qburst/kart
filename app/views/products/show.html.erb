@@ -37,10 +37,8 @@
   <div class="col-md-6">
     <% @reviews.each do |review| %>
     <div class="review">
-      <p class="review-author"><b><%= review.user.email %></b></p>
-      <div class="review-content">
-        <i><%= review.content %></i>
-      </div>
+      <p class="review-title"><%= review.user.email %></p>
+      <div class="review-content"><%= review.content %></div>
     </div>
     <% end %>
   </div>

@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   resources :items
 
+  resources :users, only: [:show]
+
   resources :orders, only: [:create]
 
   resources :reviews, only: [:create]

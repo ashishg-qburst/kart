@@ -1,11 +1,11 @@
 class Product < ActiveRecord::Base
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
 
   has_many :attachments, dependent: :destroy
   accepts_nested_attributes_for :attachments, allow_destroy: true
 
   has_many :items
-  before_destroy :ensure_not_referenced_by_any_item
+  # before_destroy :ensure_not_referenced_by_any_item
 
   belongs_to :category
   

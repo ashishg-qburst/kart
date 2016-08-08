@@ -191,10 +191,18 @@ footer {
   padding: 10px;
   border-radius: 5px;
   margin-bottom: 5px;
+  a {
+    color: black;
+  }
+}
+
+.review-title {
+  font-weight: bold;
 }
 
 .review-content {
   padding-left: 10px;
+  font-style: italic;
 }
 
 .search-products-form {

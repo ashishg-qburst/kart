@@ -1,0 +1,15 @@
+<% if @reviews.any? %>
+<div class="col-md-4">
+<h3>My Reviews</h3>
+<% @reviews.each do |review| %>
+  <div class="review">
+  <%= link_to product_path(review.product) do %>
+    <div>
+      <p class="review-title"><%= review.product.name %></p>
+      <p class="review-content"><%= review.content %></p>
+    </div>
+  <% end %>
+  </div>
+<% end %>
+</div>
+<% end %>
