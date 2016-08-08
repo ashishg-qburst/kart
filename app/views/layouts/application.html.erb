@@ -10,10 +10,10 @@
   <%= render 'layouts/header' %>
   <div class="container">
   <div class="row">
-    <% if @categories %>
+    <%= render 'shared/flash' %>
+    <% if @categories && !current_user.try(:admin?) %>
       <%= render 'layouts/catnav' %>
     <% end %>
-    <%= render 'shared/flash' %>
   </div>
     <%= yield %>
     <%= render 'layouts/footer' %>

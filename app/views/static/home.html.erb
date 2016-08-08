@@ -1,11 +1,6 @@
 <% provide(:title, "Home") %>
 <% if current_user.try(:admin?) %>
-  <%= render 'shared/category_list' %>
-  <%= render 'shared/product_list' %>
-  <div class="row">
-    <%= render 'new_product_form' %>
-    <%= render 'new_category_form' %>
-  </div>
+  <%= render 'admin_view' %>
 <% else %>
   <%= render :template => 'products/index' %>
 <% end %>

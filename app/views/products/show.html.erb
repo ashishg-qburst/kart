@@ -18,7 +18,7 @@
   <div class="col-md-4 product-info">
     <h2><%= @product.name %>
     <%= rating_for @product, "product", disable_after_rate: false, cancel: false %></h2>
-    <p><%= @product.brand %></p>
+    <p><%= @product.brand + ", " + @product.category.name %></p>
     <p>Price: <b>Rs. <%= @product.price %></b></p>
     <p><%= @product.description %></p>
     <% unless @cart_products && @cart_products.include?(@product.id) %>
@@ -30,11 +30,10 @@
 </div>
 
 <div class="row review-group">
+  <% if @reviews.any? %>
   <div class="col-md-12">
     <h3>Reviews</h3>
   </div>
-
-  <% if @reviews.any? %>
   <div class="col-md-6">
     <% @reviews.each do |review| %>
     <div class="review">
@@ -49,7 +48,7 @@
 
   <div class="col-md-6">
   <div class="review-form">
-  <%if user_signed_in? && !current_user.try(:admin?)  %>
+  <%if user_signed_in? %>
   <%= form_for @review do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
     <div class="form-group">

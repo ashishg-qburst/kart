@@ -2,7 +2,9 @@
 <div class="col-md-12 catbar">
   <ul class="nav nav-tabs">
   <% @categories.each do |cat| %>
-    <li><%= link_to cat.name, category_path(cat), method: :get %></li>
+    <li class="<%= 'active' if (params[:controller] == 'categories') && (params[:id].to_i == cat.id) %>">
+      <%= link_to cat.name, category_path(cat), method: :get %>
+    </li>
   <% end %>
   </ul>
 </div>
