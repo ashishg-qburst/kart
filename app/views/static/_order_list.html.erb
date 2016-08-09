@@ -7,17 +7,31 @@
       <th>Item Count</th>
     </tr>
   </thead>
-   <tbody>
+   <tbody id="order-table">
     <% if @orders.any? %>
     <% @orders.each do |order| %>
-      
+  
       <tr>
         <td><%= order.id %></td>
-        <td><%= order.name %></td>
+        <td><a  class="collapsed" data-toggle="collapse" data-parent="#order-table" href="<%= '#collapse' + order.id.to_s %>">
+              <%= order.name %></a></td>
         <td><%= order.pin %></td>
         <td><%= order.items.count %></td>
       </tr>
-      
+
+      <tr>
+        <td class="order-list"></td>
+        <td colspan="3" class="order-list">
+          <div id="<%= 'collapse' + order.id.to_s %>" class="collapse">
+          <ul class="item-list">
+          <% order.items.each do |item| %>
+            <li><%= item.product.name + ", " + item.quantity.to_s + " - " + item.total_price.to_s %></li>
+          <% end %>
+          </ul> 
+          </div>
+        </td>
+      </tr>
+
     <% end %>
     <% end %>
   </tbody>
