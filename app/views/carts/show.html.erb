@@ -49,21 +49,5 @@
 </table>
 <% end %>
 </div>
-
-<div class="col-md-4 checkout-form">
-  <%= form_for @order, html: {class: "order_form"} do |f| %>
-  <div class="form-group">
-    <%= label_tag(:name, "Name:") %>
-    <%= f.text_field :name, class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= label_tag(:address, "Address:") %>
-    <%= f.text_area :address, size: "30X18", class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= label_tag(:pin, "Pincode:") %><%= f.text_field :pin, class: "form-control" %>
-  </div>
-  <%= f.submit "Proceed to Checkout", class: "btn btn-success" %>
-  <% end %>
-</div>
+<%= render 'orders/new_order' %>
 </div>
