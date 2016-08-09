@@ -1,5 +1,6 @@
 class StaticController < ApplicationController
   def home
+    @orders = Order.all
     @users = User.all
     @category = Category.new
     @categories = get_categories

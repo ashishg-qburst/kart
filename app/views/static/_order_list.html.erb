@@ -1,0 +1,24 @@
+<table class="table sortable">
+  <thead class="thead-inverse">
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>PIN</th>
+      <th>Item Count</th>
+    </tr>
+  </thead>
+   <tbody>
+    <% if @orders.any? %>
+    <% @orders.each do |order| %>
+      
+      <tr>
+        <td><%= order.id %></td>
+        <td><%= order.name %></td>
+        <td><%= order.pin %></td>
+        <td><%= order.items.count %></td>
+      </tr>
+      
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
