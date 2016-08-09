@@ -5,6 +5,7 @@
       <th>Name</th>
       <th>PIN</th>
       <th>Item Count</th>
+      <th>Total(Rs.)</th>
     </tr>
   </thead>
    <tbody id="order-table">
@@ -17,16 +18,17 @@
               <%= order.name %></a></td>
         <td><%= order.pin %></td>
         <td><%= order.items.count %></td>
+        <td><%= order.total_price %></td>
       </tr>
 
       <tr>
         <td class="order-list"></td>
-        <td colspan="3" class="order-list">
+        <td colspan="4" class="order-list">
           <div id="<%= 'collapse' + order.id.to_s %>" class="collapse">
           <ul class="item-list">
-          <% order.items.each do |item| %>
-            <li><%= item.product.name + ", " + item.quantity.to_s + " - " + item.total_price.to_s %></li>
-          <% end %>
+            <% order.items.each do |item| %>
+              <li><%= item.product.name + ", " + item.quantity.to_s + " - " + item.total_price.to_s %></li>
+            <% end %>
           </ul> 
           </div>
         </td>

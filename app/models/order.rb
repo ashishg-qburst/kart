@@ -1,4 +1,6 @@
 class Order < ActiveRecord::Base
+  include ItemOps
+  
   belongs_to :user
   has_many :items, dependent: :destroy
   validates :name, :address, :pin, presence: true
