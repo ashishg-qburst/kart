@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'jquery-turbolinks'
+
 gem 'nested_form'
 
 gem 'ratyrate', git: "git://github.com/wazery/ratyrate.git" 

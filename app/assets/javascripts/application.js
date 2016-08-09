@@ -17,3 +17,4 @@
 //= require ratyrate
 //= require jquery_nested_form
 //= require bootstrap-sprockets
+//= require jquery.turbolinks
