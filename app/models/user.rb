@@ -3,7 +3,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:google_oauth2]
 
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
+
+  has_many :orders
 
   ratyrate_rater
 
