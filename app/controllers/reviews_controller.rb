@@ -4,10 +4,22 @@ class ReviewsController < ApplicationController
     @review.product_id = params[:product_id]
     if @review.save
       flash[:success] = "Post Successful"
-      redirect_to product_path(params[:product_id])
     else
       flash[:danger] = "Could not submit review"
-      redirect_to product_path(params[:product_id])
+    end
+    redirect_to product_path(params[:product_id])
+  end
+
+  def destroy
+    @review = Review.find(params[:id])
+    if (current_user.id == @review.user.id) && @review.destroy
+      flash.now[:success] = "Review deleted"
+    else
+      flash.now[:danger] = "Could not delete review"
+    end
+    respond_to do |format|
+      format.html { redirect_to request.referer }
+      format.js
     end
   end
 

@@ -36,10 +36,7 @@
   </div>
   <div class="col-md-6">
     <% @reviews.each do |review| %>
-    <div class="review">
-      <p class="review-title"><%= review.user.email %></p>
-      <div class="review-content"><%= review.content %></div>
-    </div>
+      <%= render partial: 'review_card', locals: { review: review } %>
     <% end %>
   </div>
   <% end %>

@@ -1,0 +1,5 @@
+$rc = $('.review-<%= @review.id %>');
+if ($rc){
+  $rc.slideUp(350);
+  $rc.remove();
+}

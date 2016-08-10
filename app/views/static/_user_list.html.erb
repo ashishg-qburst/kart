@@ -4,6 +4,8 @@
       <th>#</th>
       <th>Name</th>
       <th>email</th>
+      <th>Order Count</th>
+      <th>Review Count</th>
     </tr>
   </thead>
    <tbody>
@@ -14,6 +16,8 @@
         <td><%= user.id %></td>
         <td><%= user.name %></td>
         <td><%= user.email %></td>
+        <td><%= user.orders.count %></td>
+        <td><%= user.reviews.count %></td>
       </tr>
       
     <% end %>
