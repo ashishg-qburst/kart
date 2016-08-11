@@ -19,15 +19,9 @@ class ProductsController < ApplicationController
     @item ||= Item.new
   end
 
-  def new
-    @product = Product.new
-    @attachment = @product.attachments.build
-  end
-
   def create
     @new_product = Product.new(product_params)
-    cat = Category.find(params[:categories][:name])
-    @new_product.category_id = cat.id
+    @new_product.category_id = params[:category][:id]
     if @new_product.save
       flash[:success] = "Added Product"
     else
@@ -45,8 +39,7 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-    cat = Category.find(params[:categories][:name])
-    @product.category_id = cat.id
+    @product.category_id = params[:category][:id]
     if @product.update_attributes(product_params)
       flash[:success] = "Product Updated"
     else

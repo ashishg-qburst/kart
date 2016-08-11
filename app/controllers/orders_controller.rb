@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  before_filter :authenticate_user!
+  
   def create
     @order = Order.new(order_params)
     @order.add_items_from_cart(@cart)
