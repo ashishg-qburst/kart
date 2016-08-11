@@ -2,9 +2,11 @@
   <p class="review-title"><%= review.user.email %></p>
   <div class="review-content"><%= review.content %></div>
   <% if current_user && (current_user.id == review.user.id) %>
-    <%= link_to review, method: :delete, remote: true,
-          data: { confirm: "Are you sure?" } do%>
-          <i class="fa fa-trash" aria-hidden="true"></i>
-          <% end %>
+    <div class="delete-review-btn">
+      <%= link_to review, method: :delete, remote: true,
+            data: { confirm: "Are you sure?" } do%>
+            <i class="fa fa-trash" aria-hidden="true"></i>
+            <% end %>
+    </div>
   <% end %>
 </div>

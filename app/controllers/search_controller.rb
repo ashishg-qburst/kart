@@ -1,7 +1,7 @@
 class SearchController < ApplicationController
   def index
     if !params[:query].blank?
-      @products = Product.search(params[:query])
+      @products = Product.search(params[:query]).page(1).per(5)
       @categories = Category.search(params[:query])
     else
       @products = nil
