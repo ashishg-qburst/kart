@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+gem 'daemons'
+gem 'carrierwave_backgrounder'
+gem 'delayed_job_active_record'
+
 gem 'puma'
 
 gem 'activerecord-session_store'
