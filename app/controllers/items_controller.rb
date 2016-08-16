@@ -13,9 +13,9 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    cart_item = Item.find(params[:id])
-    product = Product.find(cart_item.product_id)
-    cart_item.destroy
+    @item = Item.find(params[:id])
+    @product = Product.find(@item.product_id)
+    @item.destroy
     respond_to do |format|
       format.html { redirect_to cart_path }
       format.js
