@@ -10,4 +10,8 @@ class Api::V1::BaseController < ActionController::Base
         return false
       end
     end
+
+    def check_if_admin
+      head status: :forbidden unless @user.admin?
+    end
 end
