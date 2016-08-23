@@ -16,3 +16,6 @@
 !/log/.keep
 /tmp
 /public/uploads
+
+.ruby-version
+.ruby-gemset
