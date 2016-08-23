@@ -1,4 +1,4 @@
 class Api::V1::CategorySerializer < ActiveModel::Serializer
-  has_many :products
   attributes :id, :name
+  has_many :products
 end

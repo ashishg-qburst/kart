@@ -4,10 +4,7 @@ class Api::V1::CategoriesController < Api::V1::BaseController
 
   def index
     categories = Category.all
-    render(
-      json: ActiveModel::Serializer::CollectionSerializer.new(
-        categories,
-        each_serializer: Api::V1::CategorySerializer))
+    render json: categories, each_serializer: Api::V1::CategorySerializer
   end
 
   def show
