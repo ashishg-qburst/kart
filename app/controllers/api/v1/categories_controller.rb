@@ -12,7 +12,7 @@ class Api::V1::CategoriesController < Api::V1::BaseController
     if category
       render json: Api::V1::CategorySerializer.new(category)
     else
-      head status: :not_found
+      head :not_found
     end
   end
 
@@ -21,7 +21,7 @@ class Api::V1::CategoriesController < Api::V1::BaseController
     if category.save
       render json: Api::V1::CategorySerializer.new(category), status: :created
     else
-      head status: :internal_server_error
+      head :internal_server_error
     end
   end
 
@@ -30,7 +30,7 @@ class Api::V1::CategoriesController < Api::V1::BaseController
     if category
       render json: Api::V1::CategorySerializer.new(category), status: :ok
     else
-      head status: :not_found
+      head :not_found
     end
   end
 
@@ -39,19 +39,19 @@ class Api::V1::CategoriesController < Api::V1::BaseController
     if category.update_attributes(category_params)
       render json: Api::V1::CategorySerializer.new(category), status: :ok
     else
-      head status: :unprocessable_entity
+      head :unprocessable_entity
     end
   end
 
   def destroy
     category = Category.find(params[:id])
     if category.destroy
-      head status: :ok
+      head :ok
     else
-      head status: :unprocessable_entity
+      head :unprocessable_entity
     end
   rescue
-    head status: :not_found
+    head :not_found
   end
 
   private
