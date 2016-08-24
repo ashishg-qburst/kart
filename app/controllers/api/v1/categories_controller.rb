@@ -25,6 +25,15 @@ class Api::V1::CategoriesController < Api::V1::BaseController
     end
   end
 
+  def edit
+    category = Category.find(params[:id])
+    if category
+      render(json: Api::V1::CategorySerializer.new(category), status: :ok)
+    else
+      head status: :not_found
+    end
+  end
+
   def update
     category = Category.find(params[:id])
     if category.update_attributes(category_params)
