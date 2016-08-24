@@ -1,6 +1,6 @@
 class Api::V1::CategoriesController < Api::V1::BaseController
 
-  before_action :authenticate, :check_if_admin, only: [:create]
+  before_action :authenticate, :check_if_admin, only: [:create, :update, :destroy]
 
   def index
     categories = Category.all
@@ -10,7 +10,7 @@ class Api::V1::CategoriesController < Api::V1::BaseController
   def show
     category = Category.find_by_id(params[:id])
     if category
-      render(json: category)
+      render(json: Api::V1::CategorySerializer.new(category))
     else
       head status: :not_found
     end
@@ -19,9 +19,18 @@ class Api::V1::CategoriesController < Api::V1::BaseController
   def create
     category = Category.new(category_params)
     if category.save
-      render(json: category)
+      render(json: Api::V1::CategorySerializer.new(category), status: :created)
     else
       head status: :internal_server_error
+    end
+  end
+
+  def update
+    category = Category.find(params[:id])
+    if category.update_attributes(category_params)
+      render(json: Api::V1::CategorySerializer.new(category), status: :ok)
+    else
+      head status: :unprocessable_entity
     end
   end
 
