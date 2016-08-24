@@ -3,6 +3,6 @@ class CategorySerializer < ActiveModel::Serializer
   has_many :products
 
   link :self do
-    api_v1_category_path(object)
+    api_v1_category_url(object)
   end
 end
