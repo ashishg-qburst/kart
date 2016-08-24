@@ -4,13 +4,13 @@ class Api::V1::CategoriesController < Api::V1::BaseController
 
   def index
     categories = Category.all
-    render json: categories, each_serializer: Api::V1::CategorySerializer
+    render json: categories
   end
 
   def show
     category = Category.find_by(id: params[:id])
     if category
-      render json: Api::V1::CategorySerializer.new(category)
+      render json: category, include: 'products'
     else
       head :not_found
     end
@@ -19,7 +19,7 @@ class Api::V1::CategoriesController < Api::V1::BaseController
   def create
     category = Category.new(category_params)
     if category.save
-      render json: Api::V1::CategorySerializer.new(category), status: :created
+      render json: category, status: :created
     else
       head :internal_server_error
     end
@@ -28,7 +28,7 @@ class Api::V1::CategoriesController < Api::V1::BaseController
   def edit
     category = Category.find(params[:id])
     if category
-      render json: Api::V1::CategorySerializer.new(category), status: :ok
+      render json: category, status: :ok
     else
       head :not_found
     end
@@ -37,7 +37,7 @@ class Api::V1::CategoriesController < Api::V1::BaseController
   def update
     category = Category.find(params[:id])
     if category.update_attributes(category_params)
-      render json: Api::V1::CategorySerializer.new(category), status: :ok
+      render json: category, status: :ok
     else
       head :unprocessable_entity
     end
