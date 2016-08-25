@@ -17,3 +17,6 @@
 /tmp
 
 /public/uploads
+
+.ruby-gemset
+.ruby-version

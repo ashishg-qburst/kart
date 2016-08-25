@@ -8,6 +8,7 @@ class StaticController < ApplicationController
     @new_product = Product.new
     @attachment = @new_product.attachments.build
     @new_category = Category.new
+    WelcomeMailerJob.set(wait: 1.minute).perform_later("xyz")
   end
 
   def about
